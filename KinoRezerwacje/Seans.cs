@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
+using System.Xml.Schema;
 
 namespace KinoRezerwacje
 {
@@ -24,5 +26,27 @@ namespace KinoRezerwacje
 
             return true;
         }
+        // sprawdzanie czy miejsce wolne 
+        public bool Zarezerwuj(string imie, string nazwisko, List <Miejsce> siedzenia )
+        {
+            foreach(Miejsce miejsce in siedzenia)
+            {
+                if(!CzyJestWolne(miejsce))
+                {
+                    return false;
+                }
+                
+            }
+            Rezerwacja rezerwacja = new Rezerwacja
+            {
+                Seans = this,
+                Imie = imie,
+                Nazwisko = nazwisko
+            };
+            rezerwacja.Siedzenia.AddRange(siedzenia);
+            Rezerwacje.Add(rezerwacja);
+            return true;
+        }
+        
     }
 }

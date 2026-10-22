@@ -39,5 +39,6 @@ class Program
         rezerwacja.Siedzenia.Add(sala.Siedzenia[2]);
         seans.Rezerwacje.Add(rezerwacja);
         Console.WriteLine(seans.CzyJestWolne(sala.Siedzenia[2]));
+        Console.WriteLine(seans.CzyJestWolne(sala.Siedzenia[0]));
     }
 }
