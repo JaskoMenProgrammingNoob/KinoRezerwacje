@@ -38,7 +38,7 @@ class Program
 
         List<Miejsce> wybrane = new List<Miejsce>();
         wybrane.Add(sala.Siedzenia[2]);
-        Console.WriteLine(seans.Zarezerwuj("Jan", "Krolikowski", wybrane));
+        Rezerwacja? rezerwacjaJana = seans.Zarezerwuj("Jan", "Krolikowski", wybrane);
         Console.WriteLine(seans.Zarezerwuj("Zbigniew", "Maciwoda", wybrane));
 
         //List<Miejsce> wolneMiejsca = new List<Miejsce>();
@@ -49,5 +49,9 @@ class Program
             
         }
         Console.WriteLine($"Miejsca wolne: {wolne.Count}");
+        
+        Console.WriteLine(seans.CzyJestWolne(sala.Siedzenia[2]));
+        Console.WriteLine(seans.AnulujRezerwacje(rezerwacjaJana));
+        Console.WriteLine(seans.CzyJestWolne(sala.Siedzenia[2]));
     }
 }

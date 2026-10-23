@@ -26,14 +26,14 @@ namespace KinoRezerwacje
 
             return true;
         }
-        // sprawdzanie czy miejsce wolne 
-        public bool Zarezerwuj(string imie, string nazwisko, List<Miejsce> siedzenia)
+        // rezerwowanie 
+        public Rezerwacja? Zarezerwuj(string imie, string nazwisko, List<Miejsce> siedzenia)
         {
             foreach (Miejsce miejsce in siedzenia)
             {
                 if (!CzyJestWolne(miejsce))
                 {
-                    return false;
+                    return null;
                 }
 
             }
@@ -45,7 +45,7 @@ namespace KinoRezerwacje
             };
             rezerwacja.Siedzenia.AddRange(siedzenia);
             Rezerwacje.Add(rezerwacja);
-            return true;
+            return rezerwacja;
         }
         public List<Miejsce> WolneMiejsca()
         {
@@ -59,6 +59,11 @@ namespace KinoRezerwacje
                 }
             }
             return wolne;
+        }
+        public bool AnulujRezerwacje(Rezerwacja rezerwacja)
+        {
+            
+            return Rezerwacje.Remove(rezerwacja);
         }
     }
 }
