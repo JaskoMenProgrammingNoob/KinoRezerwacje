@@ -1,5 +1,6 @@
 ﻿
 using KinoRezerwacje;
+using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
@@ -30,15 +31,14 @@ class Program
 
              Godzina = new DateTime(2026,10,10,10,23,43)
         };
-        Rezerwacja rezerwacja = new Rezerwacja
-        { 
-            Seans = seans,
-            Imie = "Zbigniew",
-            Nazwisko = "Skibdi"
-        };
-        rezerwacja.Siedzenia.Add(sala.Siedzenia[2]);
-        seans.Rezerwacje.Add(rezerwacja);
-        Console.WriteLine(seans.CzyJestWolne(sala.Siedzenia[2]));
-        Console.WriteLine(seans.CzyJestWolne(sala.Siedzenia[0]));
+
+        //Console.WriteLine(seans.CzyJestWolne(sala.Siedzenia[2]));
+        //Console.WriteLine(seans.CzyJestWolne(sala.Siedzenia[0]));
+
+
+        List<Miejsce> wybrane = new List<Miejsce>();
+        wybrane.Add(sala.Siedzenia[2]);
+        Console.WriteLine(seans.Zarezerwuj("Jan", "Krolikowski", wybrane));
+        Console.WriteLine(seans.Zarezerwuj("Zbigniew", "Maciwoda", wybrane));
     }
 }
