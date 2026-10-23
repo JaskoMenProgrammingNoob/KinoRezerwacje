@@ -40,5 +40,14 @@ class Program
         wybrane.Add(sala.Siedzenia[2]);
         Console.WriteLine(seans.Zarezerwuj("Jan", "Krolikowski", wybrane));
         Console.WriteLine(seans.Zarezerwuj("Zbigniew", "Maciwoda", wybrane));
+
+        //List<Miejsce> wolneMiejsca = new List<Miejsce>();
+        List<Miejsce> wolne = seans.WolneMiejsca();
+        foreach(Miejsce miejsce in wolne)
+        {
+            Console.WriteLine($"Numer: {miejsce.Numer} Rząd: {miejsce.Rzad}");
+            
+        }
+        Console.WriteLine($"Miejsca wolne: {wolne.Count}");
     }
 }
